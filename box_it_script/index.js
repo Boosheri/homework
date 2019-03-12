@@ -1,7 +1,8 @@
-// let length = process.argv[2].length
+let arrOfArgs = process.argv.slice(2)
+// console.log (arrOfArgs) // [arg 1, arg 2]
 
 function drawLine(num){
-  let line = ""
+  let line = "\u2501"
     for (let i=0; i<num; i++){
         line += "\u2501"
     }
@@ -9,7 +10,7 @@ function drawLine(num){
 }
 //console.log(drawLine(8))
 
-let num = 1 //have to go back and set the funtion based on length eventually
+let num = 8 //have to go back and set the funtion based on length eventually
 
 function drawTopBorder (){
   let topLeftCorner = "\u250F"
@@ -32,6 +33,14 @@ function drawBottomBorder (){
 }
 //console.log (drawBottomBorder())
 
-function drawBarsAround (){}
+function drawBarsAround (name){
+  return `\u2503${name}\u2503`
+}
+// console.log (drawBarsAround("nina"))
 
-function drawBarsAround (){}
+function boxIt (arrOfArgs){
+    for(let name of arrOfArgs){
+      return `${drawTopBorder()}\n${drawBarsAround(name)}\n${drawBottomBorder()}`
+    }
+  }
+//need to set it to be based on the array of strings and length of names
