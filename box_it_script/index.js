@@ -1,3 +1,4 @@
+#!/Users/ninaboosheri/.nvm/versions/node/v11.10.1/bin/node
 arrOfArgs = process.argv.slice(2)
 // console.log (arrOfArgs)
 
@@ -70,6 +71,6 @@ function boxIt (arrOfArgs) {
 }
 
 
-// boxIt(["nina Boosheri", "johnathan Jackson", "christopher Allgood", "sally Joseph"])
+// boxIt(["Nina Boosheri", "Johnathan Jackson", "Christopher Allgood", "Sally Joseph"])
 // boxIt()
 boxIt(arrOfArgs)
