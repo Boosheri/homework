@@ -1,6 +1,5 @@
-let arrOfArgs = []
 arrOfArgs = process.argv.slice(2)
-// console.log (arrOfArgs) // [arg 1, arg 2]
+// console.log (arrOfArgs)
 
 function drawLine(num){
   let line = ""
@@ -52,7 +51,7 @@ function longestName (arrOfArgs) {
 // console.log(longestName(["nina", "johnathan", "christopher", "sally"]))
 
 function boxIt (arrOfArgs) {
-  if (!arrOfArgs){
+  if (!arrOfArgs[0]){
     console.log("\u250E" + "\u2512" + "\n" + "\u2515" + "\u251A")
     return
   }
@@ -71,7 +70,6 @@ function boxIt (arrOfArgs) {
 }
 
 
-boxIt([arrOfArgs])
+// boxIt(["nina Boosheri", "johnathan Jackson", "christopher Allgood", "sally Joseph"])
 // boxIt()
-
-//issue with process.argv - only looping through 1st element of 1st string.
+boxIt(arrOfArgs)
