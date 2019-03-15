@@ -1,50 +1,77 @@
-let arrOfArgs = process.argv.slice(2)
+let arrOfArgs = []
+arrOfArgs = process.argv.slice(2)
 // console.log (arrOfArgs) // [arg 1, arg 2]
 
 function drawLine(num){
-  let line = "\u2501"
+  let line = ""
     for (let i=0; i<num; i++){
-        line += "\u2501"
+        line += "\u2015"
     }
   return line
 }
-//console.log(drawLine(8))
+// console.log(drawLine(8))
 
-let num = 8 //have to go back and set the funtion based on length eventually
 
 function drawTopBorder (num){
-  let topLeftCorner = "\u250F"
-  let topRightCorner = "\u2513"
+  let topLeftCorner = "\u250E"
+  let topRightCorner = "\u2512"
   return topLeftCorner + drawLine(num) + topRightCorner
 }
-//console.log (drawTopBorder())
+// console.log (drawTopBorder(8))
 
 function drawMiddleBorder (num){
   let middleLeft = "\u2523"
   let middleRight = "\u252B"
   return middleLeft + drawLine(num) + middleRight
 }
-//console.log (drawMiddleBorder())
+// console.log (drawMiddleBorder(8))
 
 function drawBottomBorder (num){
-  let bottomLeftCorner = "\u2517"
-  let bottomRightCorner = "\u251B"
+  let bottomLeftCorner = "\u2515"
+  let bottomRightCorner = "\u251A"
   return bottomLeftCorner + drawLine(num) + bottomRightCorner
 }
-//console.log (drawBottomBorder())
+// console.log (drawBottomBorder(8))
 
-function drawBarsAround (name){
-  return `\u2503${name}\u2503`
+function drawBarsAround (name, longest){
+  let differenceFromLongest = longest - name.length
+  let paddedName = name + " ".repeat(differenceFromLongest)
+  return `\u2503${paddedName}\u2503`
 }
 // console.log (drawBarsAround("nina"))
-
-//potential last step??
-//.forEach(name => `${drawTopBorder()}\n${drawBarsAround(name)}\n${drawBottomBorder()})
-//if (name === arrOfArgs.length - 1){return drawBottomBorder()}
-// else return ${drawTopBorder()}\n${drawBarsAround(name)}\n${drawMiddleBorder()}`
-function boxIt (arrOfArgs){
-    for(let name of arrOfArgs){
-      return `${drawTopBorder()}\n${drawBarsAround(name)}\n${drawBottomBorder()}`
+function longestName (arrOfArgs) {
+ let longest = arrOfArgs[0].length
+  for(let name of arrOfArgs){
+    if (name.length > longest){
+      longest=name.length
     }
   }
-//need to set it to be based on the array of strings and length of names
+  return longest
+}
+
+// console.log(longestName(["nina", "johnathan", "christopher", "sally"]))
+
+function boxIt (arrOfArgs) {
+  if (!arrOfArgs){
+    console.log("\u250E" + "\u2512" + "\n" + "\u2515" + "\u251A")
+    return
+  }
+  let longest = longestName(arrOfArgs)
+  console.log(drawTopBorder(longest))
+
+  arrOfArgs.forEach(name => {
+    console.log (drawBarsAround(name, longest))
+    if (name === arrOfArgs[arrOfArgs.length-1]){
+      console.log(drawBottomBorder(longest))
+    }
+    else
+    console.log (drawMiddleBorder(longest))
+  }
+  )  
+}
+
+
+boxIt([arrOfArgs])
+// boxIt()
+
+//issue with process.argv - only looping through 1st element of 1st string.
