@@ -12,21 +12,21 @@ function drawLine(num){
 
 let num = 8 //have to go back and set the funtion based on length eventually
 
-function drawTopBorder (){
+function drawTopBorder (num){
   let topLeftCorner = "\u250F"
   let topRightCorner = "\u2513"
   return topLeftCorner + drawLine(num) + topRightCorner
 }
 //console.log (drawTopBorder())
 
-function drawMiddleBorder (){
+function drawMiddleBorder (num){
   let middleLeft = "\u2523"
   let middleRight = "\u252B"
   return middleLeft + drawLine(num) + middleRight
 }
 //console.log (drawMiddleBorder())
 
-function drawBottomBorder (){
+function drawBottomBorder (num){
   let bottomLeftCorner = "\u2517"
   let bottomRightCorner = "\u251B"
   return bottomLeftCorner + drawLine(num) + bottomRightCorner
@@ -38,6 +38,10 @@ function drawBarsAround (name){
 }
 // console.log (drawBarsAround("nina"))
 
+//potential last step??
+//.forEach(name => `${drawTopBorder()}\n${drawBarsAround(name)}\n${drawBottomBorder()})
+//if (name === arrOfArgs.length - 1){return drawBottomBorder()}
+// else return ${drawTopBorder()}\n${drawBarsAround(name)}\n${drawMiddleBorder()}`
 function boxIt (arrOfArgs){
     for(let name of arrOfArgs){
       return `${drawTopBorder()}\n${drawBarsAround(name)}\n${drawBottomBorder()}`
