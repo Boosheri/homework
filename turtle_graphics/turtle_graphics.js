@@ -1,41 +1,74 @@
-directions = ['east', 'south', 'west', 'north']
+
 
 class Turtle {
 	constructor(x = 0,y = 0) {
         this.x = x;
         this.y = y;
-        this.position = [];
-        this.direction = directions[0];
-        this.pointsSoFar = this.position;
+        this.position = [this.x, this.y];
+        this.direction = 'east';
+        this.pointsSoFar = [this.position];
 	}
 
-	forward(num) {
-        for (let i=this.x; i<=num; i++){
+  	forward(num) {
+        if (num < 0) {console.log('please give a valid number')
+        }else{
+        for (let i=0; i<num; i++){
             if (this.direction === 'east'){
-                this.pointsSoFar.push([i,this.y])
-                this.position = this.pointsSoFar.pop()
+              this.x=this.x+1;
+                (this.pointsSoFar.push([this.x,this.y]))
+                }
+                
+            else if (this.direction === 'south'){
+                this.y=this.y+1;
+                (this.pointsSoFar.push([this.x,this.y]))
+                }
+            else if (this.direction === 'west'){
+                this.x=this.x-1;
+                (this.pointsSoFar.push([this.x,this.y]))
+                }
+            else if (this.direction === 'north'){
+                this.y=this.y-1;
+                (this.pointsSoFar.push([this.x,this.y]))
                 }
             }
-            //  if (this.direction === 'east')  {x=i}
-            //  if (this.direction === 'south')  {y=i}
-            //  if (this.direction === 'west')  {x-=i}
-            //  if (this.direction === 'north')  {y-=i}
-            
-            // this.position = this.pointsSoFar.pop
-            
-            // return this.position
         }
-	
-	left() {
-
+        this.position = this.pointsSoFar.slice(-1)
+        this.x = this.position[0]
+        this.y = this.position[1]
     }
+    
+    right () {
+        if (this.direction === 'east'){
+        this.direction = 'south'
+        }else if (this.direction === 'south'){
+        this.direction = 'west'
+        }else if (this.direction === 'west'){
+        this.direction  = 'north'
+        }else{
+        this.direction = 'east'
+        }return this.direction
+        }
+
+
+    left () {
+          if (this.direction === 'east'){
+          this.direction = 'north'
+          }else if (this.direction === 'north'){
+          this.direction = 'west'
+          }else if (this.direction === 'west'){
+          this.direction  = 'south'
+          }else{
+          this.direction = 'east'
+          }return this.direction
+        }
+    
 
     allPoints(){
-        //all points that this turtle has stepped on.
-        //this.point= all positions so far in an array of x/y coordinates
+     return this.pointsSoFar
     }
     
     print(){
+       console.log (allPoints())
         // 🐢🐾
 
     }
