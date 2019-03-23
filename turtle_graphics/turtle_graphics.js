@@ -7,7 +7,10 @@ class Turtle {
         this.position = [this.x, this.y];
         this.direction = 'east';
         this.pointsSoFar = [this.position];
-	}
+        this.maxX = x
+        this.maxY = y
+        }
+	
 
   	forward(num) {
         if (num < 0) {console.log('please give a valid number')
@@ -29,10 +32,17 @@ class Turtle {
             }
         }
         this.position = this.pointsSoFar[this.pointsSoFar.length-1]
-        this.x = this.position[0]
-        this.y = this.position[1]
+        this.x = this.position[0];
+        this.y = this.position[1];
+
+        if (this.x > this.maxX){
+          this.maxX = this.x +1
+        }else if (this.y > this.maxY){
+          this.maxY = this.y +1
+        }
+        // console.log(this.maxY)
+        // console.log(this.maxX)
         return this.position
-        
     }
     
     
@@ -63,22 +73,33 @@ class Turtle {
     
 
     allPoints(){
-     return this.pointsSoFar
+    console.log(this.pointsSoFar)
+    return this.pointsSoFar
     }
     
     print(){
-       console.log (allPoints())
-        // 🐢🐾
+      //console.log (allPoints())
+      // 🐢🐾
+      // console.log (this.maxX, this.maxY)
+      console.log(`-- BEGIN LOG \n `)
+        
+      const row = ".".repeat(this.maxX) + "\n"
+      console.log (row.repeat(this.maxY))
 
-    }
+      console.log(`-- BEGIN LOG \n `)
+  }
+
+      
+
+}
  
-}  
+ 
 
 let flash = new Turtle(0,0)
 
-flash.forward(2)
+flash.forward(10)
 flash.right()
-flash.forward(2)
+flash.forward(5)
 // console.log(flash.position)
 // console.log(flash.pointsSoFar)
 flash.right()
@@ -87,7 +108,8 @@ flash.right()
 flash.forward(2)
 flash.right()
 flash.forward(2)
-console.log(flash.pointsSoFar)
+flash.print()
+// console.log(flash.pointsSoFar)
 // console.log(flash.pointsSoFar)
 // console.log(flash.direction)
 // console.log(flash.pointsSoFar)
