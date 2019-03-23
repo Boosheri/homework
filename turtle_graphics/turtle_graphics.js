@@ -10,7 +10,6 @@ class Turtle {
         this.maxX = x
         this.maxY = y
         }
-	
 
   	forward(num) {
         if (num < 0) {console.log('please give a valid number')
@@ -36,15 +35,11 @@ class Turtle {
         this.y = this.position[1];
 
         if (this.x > this.maxX){
-          this.maxX = this.x +1
+        this.maxX = this.x
         }else if (this.y > this.maxY){
-          this.maxY = this.y +1
-        }
-        // console.log(this.maxY)
-        // console.log(this.maxX)
-        return this.position
+        this.maxY = this.y
+        } return this
     }
-    
     
     right () {
         if (this.direction === 'east'){
@@ -55,9 +50,8 @@ class Turtle {
         this.direction  = 'north'
         }else{
         this.direction = 'east'
-        }return this.direction
+        }return this
         }
-
 
     left () {
           if (this.direction === 'east'){
@@ -68,64 +62,73 @@ class Turtle {
           this.direction  = 'south'
           }else{
           this.direction = 'east'
-          }return this.direction
+          }return this
         }
-    
 
     allPoints(){
-    console.log(this.pointsSoFar)
+    // console.log(this.pointsSoFar)
     return this.pointsSoFar
     }
     
     print(){
-      //console.log (allPoints())
-      // 🐢🐾
-      // console.log (this.maxX, this.maxY)
-      console.log(`-- BEGIN LOG \n `)
-        
-      const row = ".".repeat(this.maxX) + "\n"
-      console.log (row.repeat(this.maxY))
+        let graph = [];
+        for(let x = 0; x <= this.maxY; x++){
+        let row = [];
+        for(let y = 0; y <= this.maxX; y++){
+          row.push('🐾');
+        };
+        graph.push(row);
+      };
+      // Array.from({length: this.maxY}).map(() => {
+      //   let row = [];
+      //   Array.from({length: this.maxX}).forEach(() => {
+      //     row.push('.');
+      //   });
+      //   graph.push(row);
+      // });
+      // The above works, but isn't my code, so I had trouble understanding it
 
       console.log(`-- BEGIN LOG \n `)
+
+      this.allPoints().forEach((point) => {
+        graph[point[1]][point[0]] = '🐢';
+      });
+      graph.forEach((step) => {
+          console.log(step.join(''));
+        });
+        // I still find the above confusing
+
+      console.log(`-- END LOG \n `)
   }
-
-      
-
 }
- 
- 
 
 let flash = new Turtle(0,0)
-
 flash.forward(10)
 flash.right()
 flash.forward(5)
-// console.log(flash.position)
-// console.log(flash.pointsSoFar)
 flash.right()
-flash.forward(2)
+flash.forward(5)
 flash.right()
 flash.forward(2)
 flash.right()
 flash.forward(2)
 flash.print()
-// console.log(flash.pointsSoFar)
-// console.log(flash.pointsSoFar)
-// console.log(flash.direction)
-// console.log(flash.pointsSoFar)
-// flash.left()
-// flash.forward(5)
-//  console.log(flash.position)
-//  console.log(flash.pointsSoFar)
-//   .right()
-//   .forward(5)
-//   .right()
-//   .forward(5)
-//   .print()
-// console.log (flash.position)
-// flash.forward(5)
-// console.log (flash.position)
-// console.log (flash.pointsSoFar)
 
+const bash = new Turtle(0, 4).forward(3).left().forward(3);
+bash.print();
 
-  
+new Turtle(0, 4)
+  .forward(3)
+  .left()
+  .forward(3)
+  .right()
+  .forward(5)
+  .right()
+  .forward(8)
+  .right()
+  .forward(5)
+  .right()
+  .forward(3)
+  .left()
+  .forward(3)
+  .print();
