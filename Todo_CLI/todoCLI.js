@@ -3,36 +3,71 @@ const rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout,
 });
+let list = []
+let incomplete = '[ ] '
+let complete = '[✓] '
 
-function start (){
-rl.question('Welcome to Todo CLI! \n-------------------- \n(v) View • (n) New • (cX) Complete • (dX) Delete • (q) Quit\n', (menuItem) => {
+function start(){
+rl.question('\n(v) View • (n) New • (cX) Complete • (dX) Delete • (q) Quit\n', (menuItem) => {
     if (menuItem === "v"){
-        console.log("view")
         view()
     }
     else if (menuItem === "n"){
-        console.log("new")
-        // new()
+        add()
     }
-    else if (menuItem === "cX"){
-        console.log("complete")
-        // complete()
+    else if (menuItem[0] === "c"){
+        let x = parseInt(menuItem[1])
+        comp(x)
     }
-    else if (menuItem === "dX"){
-        console.log("delete")
-        // delete()
+    else if (menuItem[0] === "d"){
+        let x = parseInt(menuItem[1])
+        del(x)
     }
     else if (menuItem === "q"){
-        console.log("quit")
-        rl.close()
+        console.log("See you soon! ✌🏽");
+        rl.close();
+    }else{
+        console.log('Please enter a valid menu item.')
+        start()
     }
 })
 }
-start()
 
-
-function log(text) {
-	if (process.env.DEVELOPMENT) {
-		console.log(text);
+function view() {
+    // console.log('list', list);
+    if (!list.length){
+        console.log ('Your list is empty 🙈')
+    }else{
+        list.forEach((item, index) => {
+            let status = item.complete ? complete : incomplete;
+            console.log(index + status + item.name)
+        })
+      
     }
+    start()
+};
+
+function add() {
+    rl.question('What would you like to add to your to-do list?\n', (tditem) => {
+        let item = {};
+        item.name = tditem;
+        item.complete = false;
+        list.push(item);
+        console.log ('"' + tditem + '"added 💪🏽');
+        start()
+    });
+};
+
+function comp (x){
+    list[x].complete = true;
+    console.log ('"' + list[x].name + '" completed 🙌🏽')
+    start()   
 }
+function del (x){
+    console.log ('"' + list[x].name + '" deleted 🙅🏽‍♀️')
+    list.splice(x, 1)
+    start()  
+}
+
+console.log('\nWelcome to Todo CLI! 👋🏽 \n--------------------');
+start()
