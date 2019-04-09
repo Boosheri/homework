@@ -1,0 +1,14 @@
+nav{
+    display: flex;
+}
+
+.form-group {
+    margin: 2em;
+    padding: 2em;
+
+}
+
+.card {
+    margin: 2em;
+    padding: 2em;
+}

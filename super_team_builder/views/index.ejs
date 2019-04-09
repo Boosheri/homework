@@ -1,0 +1,27 @@
+<%- include("./partials/header") %>
+
+
+<h1>Cohorts</h1>
+
+<ul>
+  <% for (let c in cohort) { %>
+    <p> <%= c %> </p>
+      <div class="card">
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= cohort[c].team_logo %>">
+        </div>
+        
+        <div class="card-body">
+        <h5 class="card-title"><%= cohort[c].team_name %></h5>
+        <p class="card-text"><%= cohort[c].team_members %></p>
+        </div>
+        
+        <a href="/show/<%= cohort[c].id %>" class="btn btn-primary">Show Cohort</a>
+      </div>
+    <% } %>
+</ul>
+
+
+
+<%- include("./partials/footer") %>
+
