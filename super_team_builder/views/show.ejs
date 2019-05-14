@@ -1,0 +1,49 @@
+<%- include("./partials/header") %>
+
+
+<div>
+    <h1><%= cohort.team_name %></h1>
+    <h4><%= cohort.team_members %></h4>
+</div>
+
+<h1>Method</h1>
+
+<div class="form">
+    <form class="assign" action="/show/<%= cohort.id %>" method="GET">
+
+        <div>
+            <input type="radio" id="team_count" name="method" value="team_count"
+                    checked>
+            <label for="team_count">Team Count</label>
+        </div>
+
+        <div>
+            <input type="radio" id="number_per_team" name="method" value="number_per_team"
+            <label for="number_per_team">Number Per Team</label>
+        </div>
+
+        <div>
+            <label for="quantity">Quantity</label>
+            <br>
+            <input type="number" name="quantity">
+        </div>
+
+        <div>
+            <input type="submit" class="btn btn-primary" value="Assign Teams" >
+        </div>
+
+        <div class="results">
+            <br>
+            <h5> Members </h5>
+            <% for (let r of result){%>
+                <p> <%=r%> </p>
+                <% } %>
+        
+        </div>
+    </form>
+
+</div>
+
+<%- include("./partials/footer") %>
+
+

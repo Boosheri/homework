@@ -1,0 +1,39 @@
+<%- include("./partials/header") %>
+
+
+
+<form class="new_cohort" action="/show" method="POST">
+
+  <div class="form-group">
+
+    <input type="text"
+    class="form-control"
+    name="team_name" 
+    value:"team_name"
+    cols="50"
+    placeholder="team awesome"
+    ></textarea>
+
+    <textarea
+    name="team_members"
+    class="form-control"
+    value:"team_members"
+    cols="50"
+    rows="10"
+    placeholder="lucy, chris, john, jen"
+    ></textarea>
+
+    <input type="text"
+    class="form-control"
+    name="team_logo"
+    value:"team_logo"
+    cols="50"
+    placeholder="images.com/your-image"
+    ></textarea>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+<%- include("./partials/footer") %>
+
+
